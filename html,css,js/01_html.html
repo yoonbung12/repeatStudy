@@ -3,10 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>HTML,CSS공부</title>
+    <style>
+        img {
+            width:1000px;
+            height: 100px;
+        }
+
+
+
+        div {
+            /* naver에서 html색상표 검색해서 찾아도 괜춘할듯 */
+            color: #6799ff;
+            font-size: 2em; /* m은  원래크기의 2배 */
+            /* 글자 정렬 */
+            text-align: center;
+        }
+
+        .table_1{
+            font-size: 3em;
+            margin-top: 300px;
+            margin-left: 50%;
+            text-align: center;
+
+            
+        }
+        .table_2{
+            font-size: 3em;
+            margin-top: 300px;
+            margin-left: 50%;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
-    <p>하하핳하하하</p>
+    <span style="color: red;">Hello</span>
+    <span style="color: blue;">Hi</span>
+    <div style="color: green; text-align: left;">hello</div>
     <!-- 태그의 속성 -->
     <!-- 요소(element) -->
     <p align="center">HelloWorld </p>
@@ -16,6 +49,67 @@
         자식태그 : child, children
         형제태그 :  sibling
      -->
+
+     <img src="./sesacImg.png" title="새싹사진"/>
+     <img src="./sesacImg.png" title="새싹사진"/>
+     <!-- 하이퍼 링크  _blank 문서를 새로 띄워준다-->
+     <a href="https://www.google.com/" target="_blank" >clickBtn</a>
+
+     
+     <div>Div태그는 안에 여러가지 span태그를 만들수 있다!!!!(한단락을 설정가능)</div>
+
+     <table class="table_1" border="1" cellspacing=10 cellpadding=50>
+        <caption>표의 제목</caption>
+        <thead>
+            <!-- thead: 맨 첫줄의 열 이름넣는곳 -->
+            <!-- tr: 행 th: thead열에 들어갈 attribute -->
+            <tr>
+                <th>메뉴</th>
+                <th>가격</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- tbody는 실질적으로 데이터가 들어가는 곳 -->
+            <tr>
+                <!-- td: 데이터 넣기 -->
+                <td>ice</td>
+                <td>1,000</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td>총액 </td>
+                <td>20000</td>
+            </tr>
+        </tfoot>
+     </table>
+
+     <table border="1" class="table_2">
+        <tr>
+            <td colspan="3">1</td>
+            <td>2</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td rowspan="1">4</td>
+            <td>5</td>
+            <td>6</td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td>8</td>
+            <td>9</td>
+        </tr>
+     </table>
+
+     <table border="1">
+        <tr>
+         <td>1</td>
+         <td>2</td>
+         <td>3</td>
+        </tr>
+    </table>
+
 
 </body>
 </html>
