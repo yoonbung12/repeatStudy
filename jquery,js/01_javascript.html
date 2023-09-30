@@ -14,5 +14,72 @@
     <!-- strong 감싸여 있는 부분만 강조된다. -->
     <p><strong>이부분만 강조된다 </strong>옆에서는 안되고...</p>
     <!-- body에 넣냐, 아니면 head에 넣나 결국 페이지 로딩속도가 중요해서 나는 아래에 넣기로 했다. -->
+    <!-- javaScript변수 선언(var, let, const) -->
+    <script>
+        // 변수 이름은 이해하기 쉽게 적는다 !!!!!!
+        // Var - 재할당 (O), 중복선언(O)
+        var a1 = "홍길동"
+        var a1 = "임창정"
+
+        // let - 재할당 (O), 중복선언(X)
+        let name = "봉구";
+        let name1 = "봉구";
+        console.log(name1);
+
+        //const - 재할당 불가, 중복 선언 불가
+        const name2 = "bonggu";
+
+        //---- 약한 타입 자료형-----
+
+        // number는 자료형(정수와 소수)
+        let number = 10;
+        let number1 = 10.4;
+
+        // boolean 참, 거짓 데이터
+        let checked = true;
+        let isShow = false;
+
+        // ---객체 자료형(array[] )
+        let fruits = ['apple', 'banana','kiwi'];
+        console.log(fruits);
+        console.log(fruits[0]);
+
+        // 배열 자료형 메소드(변수병.legth, 변수명.push, 변수명.push(), 변수명.pop() )
+        // 변수명.shift() : 맨 앞의 항목 제거, 변수명.indexOf(찾을값): 배열 내부 값의 위치
+        //test
+        let colors = ['빨','주','노', '초', '파', '람', '보'];
+        console.log(colors[2]);
+        colors.push('베이지');
+        console.log(colors);
+
+        //배열 거꾸로 출력하기
+        //const reverse = colors.reverse(); //이렇게 해도 되고
+        console.log(colors.reverse());
+        console.log(colors);
+
+        // Object(객체) 자료형 - 키 : 값 형태로 저장한다.
+        const cat = {
+            name: 'bong',
+            age: 3,
+            isCute: true,
+            mew: function(){
+                return '야용';
+            },
+        };
+        console.log(
+            `myName은 ${cat.name}, 나이는 ${cat.age} 입니다.` //(`사용했다.)`
+            
+        );
+        console.log(typeof cat.name);
+        console.log(typeof cat.age);
+        console.log(typeof cat.isCute);
+
+        // 형 변환 방법 : let num = 12, let a = String(a);, let b = num.toString();
+        
+
+    </script>
+
+
+
 </body>
 </html>
