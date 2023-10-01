@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js 표준 객체</title>
+</head>
+<body>
+    <script>
+        // Data객체
+        new Date();//현재 날짜
+        // new Date("날짜를 나타내는 문자열")
+         Date("December 14, 1977 13:30:00");
+        // new Date(밀리초)
+        new Date(8000000); // 1970년 1월 1일 0시부터 밀리초만큼 지난 날짜
+        // new Date(년, 월, 일, 시, 분, 초, 밀리초)
+        new Date(16, 5, 25); // 1916년 5월 25일 00:00:00
+        new Date(2016, 5, 25, 15, 40); // 2016년 5월 25일 15:40:00
+
+        // Date.prototype getter 메서드 ----------
+        // 모든 Date 인스턴스는 Date.prototype으로부터 method, property를 상속 받는다.
+        // ex) getFullYear(), getMonth(), getDate() 등
+
+        //1.getFullYear()
+        var date = new Date();
+        console.log(date.getFullYear());
+
+        //2.getMonth(), getDate(), getDay(), getTime() getHours()....
+        console.log("오늘 " + date.getMonth() + "월" + date.getDate() + "일 입니다."); 
+
+        // math메서드 Math.min(), Math.max(), Math.random(), Math.round() -소수점첫번째 자리에서 반올림 한다.
+        let min = 10;
+        let max = 20;
+        console.log(Math.random());
+        console.log(Math.random() * (max + min) + min);
+
+        console.log(Math.round(10.59));
+
+    </script>
+</body>
+</html>
