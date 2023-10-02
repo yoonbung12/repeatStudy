@@ -6,6 +6,20 @@
     <title>js 표준 객체</title>
 </head>
 <body>
+    <div class="box" id="row1" >안녕하세요~~~~</div>
+    <div class="box" >안녕하세요~~~~</div>
+    <div class="box">안녕하세요~~~~</div>
+    <div class="box">안녕하세요~~~~</div>
+    <div class="box">안녕하세요~~~~</div>
+
+    <div class="box">
+        <input type="button" name="one" value="one" />
+        <input type="button" name="two" value="two" />
+        <input type="button" name="one" value="three" id="three" />
+        <input type="checkbox" name="one" id="check">
+      </div>
+
+
     <script>
         // Data객체
         new Date();//현재 날짜
@@ -35,6 +49,28 @@
         console.log(Math.random() * (max + min) + min);
 
         console.log(Math.round(10.59));
+
+        //DOM: html문서 요소의 집합이다.
+        //요소 선택 메서드
+        // document.querySelector(css 선택자)
+        // document.querySelectorAll(css 선택자)
+        // document.getElementById(아이디 속성값)
+        // document.getElementsByClassName(클래스 속성값)
+        // document.getElementsByTagName(태그 이름)
+        // document.getElementsByName(name 속성값)
+
+        let boxEl = document.querySelectorAll(".box");
+        console.log(boxEl);
+
+        let box1 = document.getElementById("row1");
+        console.log(box1);
+
+        let boxes = document.getElementsByClassName("box");
+        console.log(boxes);
+
+        let inputName = document.getElementsByName("one");
+        console.log(inputName); 
+        console.log(inputName[0]);
 
     </script>
 </body>
