@@ -59,8 +59,8 @@
         // document.getElementsByTagName(태그 이름)
         // document.getElementsByName(name 속성값)
 
-        let boxEl = document.querySelectorAll(".box");
-        console.log(boxEl);
+        // let boxEl = document.querySelectorAll(".box");
+        // console.log(boxEl);
 
         let box1 = document.getElementById("row1");
         console.log(box1);
@@ -71,6 +71,57 @@
         let inputName = document.getElementsByName("one");
         console.log(inputName); 
         console.log(inputName[0]);
+
+        //요소 생성하기------------
+        let p = document.createElement('p');
+        //요소 추가하기
+        const box = document.querySelector(".box");
+        const element = document.createElement('p');
+        box.append(element);
+        //요소.append() /요소.appendChild()
+        // 선택된 요소의 맨 뒤의 자식 요소로 추가됨
+
+        // 요소.prepend()
+        // 선택된 요소의 맨 앞쪽인 자식 요소로 추가됨
+
+        // 요소.before() / 요소.after()
+        // 선택된 요소의 앞/ 뒤에 있는 형제 요소로 추가
+
+        //요소내 문자열 다루기-----------
+        // 요소.innerHTML
+        // 해당 Element의 HTML, XML을 읽어오거나 설정할 수 있다
+
+        // 요소.innerText
+        // 그 요소와 자손의 렌더링 된 텍스트 콘텐츠 , 눈에 보이는 텍스트만 반환
+
+        // 요소.textContent
+        // 노드와 그 자손의 텍스트 반환
+        // <script>, <style>을 비롯한 요소의 모든 텍스트 콘텐츠 반환
+        
+        // 자식 노드 접근하기---------- 부모 노드 접근하기 도 있다...
+        // 요소.children
+        // 자식 요소 반환
+        // 인덱스 번호로 접근 가능
+
+        // 요소.childNodes
+        // 자식 노드 반환
+        // 인덱스 번호로 접근 가능
+
+        // 형제 노드에 접근하기 -------------
+        // 요소.previousElementSibling
+        // 이전 형제 요소 반환
+
+        // 요소.nextElementSibling
+        // 다음 형제 요소 반환        
+
+        // 이벤트 처리 addEventListener
+        // 요소.addEventListener(이벤트, 명령)
+        // 선택된 요소에 지정한 이벤트가 발생하면, 약속된 명령어를 실행
+        let boxEl = document.querySelector(".box");
+        console.log(boxEl);
+        boxEl.addEventListener("click", function () {
+        alert("click!");
+        });
 
     </script>
 </body>
