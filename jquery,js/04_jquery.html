@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JQuery</title>
+    <!--jquert사이트에서 받아올것 -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" 
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" 
+        crossorigin="anonymous">
+    </script>
+    <style>
+        .container {
+        background-color: skyblue;
+        display: flex;
+        height: 150px;
+      }
+
+      .item {
+        width: 100px;
+        height: 100px;
+        margin: 10px;
+      }
+
+      .pink {
+        background-color: pink;
+      }
+
+      .green {
+        background-color: lightgreen;
+      }
+    </style>
+</head>
+<body>
+    <div id="div1">HIHI안녕함?</div>
+    <button type="button" onclick="submitJava();">변환1</button>
+    <button type="button" onclick="submitJquery();">변환2</button>
+    
+    <input type="text" placeholder="이름을 입력하세요" />
+
+    <button type="button" onclick="getValue();">버튼 1</button>
+    <button type="button" onclick="setValue();">버튼 1</button>
+
+    <ul type="circle">
+        <li id="apple">사과</li>
+        <li id="banana">바나나</li>
+        <li id="kiwi">키위</li>
+        <li id="mango">망고</li>
+    </ul>
+
+    <button type="button" onclick="getAttr();">버튼1</button>
+    <button type="button" onclick="setAttr();">버튼2</button>
+
+    <div class="container">
+        <div class="item pink"></div>
+        <div class="item pink"></div>
+        <div class="item pink"></div>
+    </div>
+    <button type="button" onclick="usePrepend();">prepend</button>
+    <button type="button" onclick="useAppend();">Append</button>
+    <button type="button" onclick="useBefore();">Before</button>
+    <button type="button" onclick="useAfter();">After</button>
+    <button type="button" onclick="useRemove();">Remove</button>
+    <button type="button" onclick="useEmpty();">empty</button>
+
+    <!-- --------------------------------------------- -->
+    
+    <script>
+        // -----1번째
+        function submitJava(){
+            document.getElementById("div1")
+                    .setAttribute('style', 'border:2px solid red;');
+        }
+        // ------둘의 차이가 간단해지는거?
+        function submitJquery(){
+            $("#div1").html("안녕~~????");
+            $("#div1").css("border", "3px dotted blue");
+
+        }
+
+        // -----2번째(val 값 가져오기)
+        function getValue(){
+            let value = $("input").val();
+            alert(value);
+
+        }
+        function setValue(){
+            $("input").val('코딩온');
+        }
+
+        // -----3번째(attr 에 대하여)
+        function getAttr(){
+            let ulType = $('ul').attr('type');
+            alert(ulType);
+
+        }
+        function setAttr(){
+            $("#mango").attr('style', 'color: red;');
+        }
+
+        // -----4번째 (prepend, append, before, after, remove, empty)
+        function usePrepend(){ //선택된 요소에  자식 요소를 추가하는것 (첫번째 자식 요소에 추가)
+            $('.container').prepend('<div class="item green"></div>')
+        }
+        function useAppend(){//선택된 요소에  자식 요소를 추가하는것 (마지막 자식 요소에 추가)
+            $('.container').append('<div class="item green"></div>')
+        }
+        function useBefore(){ // 모두 선택된 요소의 형제요소를 추가하는 코드입니다.
+            $('.container').before('<div class="item green"></div>')
+        }
+        function useAfter(){// 모두 선택된 요소의 형제요소를 추가하는 코드입니다.
+            $('.container').after('<div class="item green"></div>')
+        }
+        function useRemove(){ // 선택한 요소 자체를 삭제
+            $('.container').remove();
+        }
+        function useEmpty(){ // 선택한 하위 요소들을 모두 삭제
+            $('.container').empty();
+        }
+
+
+        // JavaScript code
+        function js(){
+            document.getElementById("b").innerHTML("<div>")
+        }
+        // jquery로 바꿈 간편하게
+        // jQuery 기본 구조------------
+        // $(선택자 || DOM객체 ).동작함수();
+        // jQuery code
+        function jQuery(){
+            // id = b    변경할 내용
+            $("#b").html("<div>");  
+            // $("#b").css("속성","속성값");
+        }
+    </script>
+</body>
+</html>
