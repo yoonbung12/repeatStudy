@@ -33,11 +33,12 @@
     <button type="button" onclick="findPrev()">findPrev</button>
     <button type="button" onclick="findChildren()">findChildren</button>
 
-    <!-- add,remove,has 클래스 버튼 만들기 -->
+    <!-- add,remove,has, toggle 클래스 버튼 만들기 -->
     <div class="css1"></div>
     <button type="button" onclick="addClass()">addClass</button>
     <button type="button" onclick="removeClass()">removeClass</button>
     <button type="button" onclick="hasClass()">hasClass</button>
+    <button type="button" onclick="toggleClass()">toggleClass</button>
     <script>
         // -----1번째 (parents())
         function findParent(){ //부모와 조상 요소를 반환해주는 함수다.
@@ -85,9 +86,12 @@
         function hasClass(){    
             // $(선택자).hasClass("클래스명")
             alert($("div").hasClass("css1"));
-
         }
-            
+        // -------toggle클래스 선택된 요소에 들어 있는지 확인하여 있으면 삭제, 없으면 추가
+        function toggleClass(){
+            // $("선택자").toggleClass("클래스명")
+            $("div").toggleClass("css1");
+        }
 
     </script>
 </body>
