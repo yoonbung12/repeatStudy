@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--jquert사이트에서 받아올것 -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" 
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" 
+        crossorigin="anonymous">
+    </script>
+    <title>Document</title>
+</head>
+<body>
+    <h5>요소 탐색</h5>
+    <div class="ancestor">
+        <div class="parent">
+            <div class="child1">child1</div>
+            <div class="child2">child2</div>
+            텍스트
+            <div class="child3">child3</div>
+        </div>
+    </div>
+
+    <button type="button" onclick="findParent()">findParent</button>
+    <button type="button" onclick="findNext()">findNext</button>
+    <button type="button" onclick="findPrev()">findPrev</button>
+    <button type="button" onclick="findChildren()">findChildren</button>
+    <script>
+        // -----1번째 (parents())
+        function findParent(){ //부모와 조상 요소를 반환해주는 함수다.
+            $(".child2").parents().css("color", "red");
+            console.log($(".child2").parent());
+            console.log($(".child2").parent()[0]);
+        }
+
+        // -----2번째 (next())
+        function findNext(){
+            // next(): 내 다음 형제를 보는 친구
+            // document의 nextElementSibling과 동일
+            console.log($(".child2").next());
+            console.log($(".child2").next()[0]);
+            $(".child2").next().css("color", "red");
+        }
+        function findPrev(){
+            // prev(): 내 이전 형제를 보는 친구
+            // document의 previousElementSibling과 동일
+            console.log($(".child3").prev());
+            console.log($(".child3").prev()[0]);
+            $(".child3").prev().css("color", "blue");
+        }
+
+        // ----3번째 (children())
+        function findChildren(){
+            // children(): 부모요소를 선택했을때 그 자식요소들을 반환
+            // document의 children과 동일하다.
+            console.log($(".parent").children());
+            console.log($(".parent").children()[0]);
+            $(".parent").children().css("color", "orange");
+        }
+
+    </script>
+</body>
+</html>
