@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!--jquert사이트에서 받아올것 -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" 
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" 
+        crossorigin="anonymous">
+    </script>
+    <style>
+        .box {
+
+            background-color: black;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <form action="">
+        <img  src=" "  id="fruitImg" width="400px" height="400px" />
+        <button type="button" class="box"   id="apple" onclick="changeImg('./apple.png')">사과</button>
+        <button type="button"  class="box" id="banana" onclick="changeImg('./banana.png')" >바나나</button>
+        <button type="button"  class="box" id="grape" onclick="changeImg('./grape.png')">포도</button>
+        <button type="button"  class="box" id="straw" onclick="changeImg('./strawberry.png')">딸기</button>
+    </form>
+    
+    <script>
+        function changeImg(imageSrc){
+            $("#fruitImg").attr("src", imageSrc);
+        }
+
+    </script>
+</body>
+</html>
