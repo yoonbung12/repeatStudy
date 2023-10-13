@@ -11,3 +11,16 @@ app.listen(PORT, function(){
     console.log(`PORT OPEN ${PORT}`);
 });
 // -----------------------------------
+
+// -------ejs 템플릿 설정------------------
+app.set("view engine", "ejs"); //view engine을 ejs로 바꿈
+// app 객체의 view폴더를 기본값 : "./views"
+// 만약 ./view 폴더로 바꾸고 싶으면  app.set("views", "./view"); 하면됨
+// app.set("views", "./view"); 
+
+// ---------------------------------------
+
+app.get("/test", function(request, response){
+    console.log(__dirname); // 절대 경로Users/yun-byeong-woo/Documents/GitHub/study_alone/repeatStudy/node-study/01-express
+    response.sendFile(__dirname + "/index.html") // 절대 경로
+})
