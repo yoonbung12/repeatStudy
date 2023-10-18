@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+<body>
+    <form action="/postForm"  method="post">
+        <!-- 이름 -->
+        <h2>이름
+            <input type="text" name="name" required/>
+        </h2>
+        <!-- 성별 선택 -->
+        <fieldset>
+            <legend>성별</legend>
+            <input type="radio" name="gender" id="male" value="male" /><label for="male">남자</label>
+            <input type="radio" name="gender" id="female" value="female"  /><label for="female">남자</label>
+        </fieldset>
+        <!-- 생년 월일 -->
+        <fieldset>
+            <legend>생년 월일</legend>
+            <select name="year" value="year" >
+                <% for(let i = 1990; i <= 2023; i++) {  %>
+                    <!-- ejs로 데이터 전달하기 value  안에 i를 선택하기-->
+                    <option value="<%= i%>"><%= i%></option>
+                <% } %>
+            </select>년
+            <select name="month" value="month">
+                <% for(let i = 1; i <= 12; i++){ %>
+                    <option value="<%= i %>"><%= i%></option>
+                <% } %>
+            </select>월
+            <select name="date" value="day">
+                <% for(let i = 1; i <= 31; i++){ %>
+                    <option value="<%= i%>"><%= i%></option>
+                <%}%>
+            </select>일
+        </fieldset>
+        <!-- 관심사 -->
+        <fieldset>
+            <legend>관심사</legend>
+            <input type="checkbox" name="travel" value="travel"/>여행
+            <input type="checkbox" name="food" value="food" />음식
+            <input type="checkbox" name="fashion" value="fashion" />패션
+        </fieldset>
+        <fieldset>
+            <legend>선택</legend>
+            좋아하는 색: <input type="color" name="color" value="#000000" />
+            좋아하는 숫자: <input type="number" max="10" min="1" value="1">
+        </fieldset>
+        <button type="submit">회원가입</button>
+    </form>
+
+    <hr/>
+    <br>
+
+    <form action="/join" method="post">
+
+        <div>이름
+            <input type="text" name="name" value="name"  required/>
+        </div>
+        <!--id= 영어 소문자 + 숫자만 5글자 이상  -->
+        <div>ID
+            <input type="text" name="id"  value="id" id="enNum"  />
+        </div>
+        <!-- 영소,영대, 숫자,특수문자 모두 한번이상 사용  -->
+        <div>PW
+            <input type="password" name="pw" id="enNumSpec" />
+        </div>
+        <!-- 전화번호는 000-0000-000형식으로 받을것 -->
+        <div>전화번호
+            <input type="text" name="phoneNumber" id="phonNum" />
+        </div>
+        <div>성별
+            <input type="text" name="gender" />
+        </div>
+
+    </form>
+
+    <script>
+        let enNum;
+        let enNumSpec;
+        let phonNum;
+        $(document).ready(function(){
+
+        })
+        // $(document).ready(function(){
+        //     $("button").click(function(){
+        //         let gender = $("input[type=radio][name=gender]:checked").val();
+        //         if(gender){
+        //             alert(gender);
+        //         } else{
+        //             alert("성별을 체크해 주세요");
+        //         }
+        //     })
+        // });
+
+
+
+    </script>
+</body>
+</html>
