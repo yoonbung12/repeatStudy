@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const PORT = 8002;
 
+
 // 미들웨어 설정
 app.set("view engine", "ejs");
 
@@ -29,4 +30,24 @@ app.get("/axiosGet", function(req, res){
 app.post("/axiosPost",function(req,res){
     console.log(req.body);
     res.send(req.body);
-})
+});
+app.post("/aixosPost2", function(req,res){
+    console.log(req.body);
+    // id,pw 변수 저장해놓기
+    const id = "bonggu12";
+    const pw = 1234;
+    const sucess = (req.body.id == data.id && req.body.pw == data.pw);
+    const data ={
+        ...req.body,
+        sucess: sucess,
+        msg: success ? "로그인 성공!!!" : "로그인 실패"  
+    };
+    console.log(success);
+
+    res.send(req.body);
+    res.send(data);
+
+
+
+
+});
