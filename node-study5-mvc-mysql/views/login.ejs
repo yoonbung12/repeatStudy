@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <title>Login페이지</title>
+</head>
+<body>
+    <!-- 로그인 성공시 이동해야할 곳 -->
+    <form name="login-info" action="/memberInfo" method="POST">
+        <input type="hidden" name="id" />
+    </form>
+
+    </form>
+    <form name="login-form">
+        <fieldset>
+            <legend>login</legend>
+            <label>
+                id: <input type="text" name="id" placeholder="id를 입력해라" />
+            </label>
+            <label>
+                pw:<input type="password" name="pw" placeholder="pw를 입력하세요" />
+            </label>
+            <button type="button" onclick="login()">로그인 하세요~~</button>
+        </fieldset>
+    </form>
+    <script>
+        function login(){
+            var form = document.forms["login-form"];
+            if(!form.checkValidity()) {
+                form.reportValidity();
+                console.log("reportValidity");
+
+                return false;
+            }
+            // 유저 id, 비번 
+            let user = {
+                id: form.id.value,
+                pw: form.pw.value
+            };
+            axios({
+                method: "post",
+                url: "/login",
+                data: user
+            }).then((res) =>{
+                if(res.data.result == true) {
+                    alert("로그인 성공");
+
+                    // 로그인 성공시 회원 정보 페이지로 이동하기 위해서
+                    let form_info = document.forms["login-info"];
+                    form_info.id.value = res.data.id;
+                    form_info.submit();
+                } else {
+                    alert("로그인 실패");
+                }
+            });
+
+
+        }
+    </script>
+</body>
+</html>

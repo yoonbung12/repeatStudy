@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" 
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" 
+            crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+<body>
+    <h2>HIHIH</h2>
+    <form name="join">
+        <fieldset>
+            <legend>회원가입</legend>
+            <input type="text" name="id" placeholder="id쳐라"/>
+            <input type="password" name="pw" placeholder="비번 입력해라" />
+            <input type="text" name="membername" placeholder="성함입력" />
+            <input type="number" name="age" placeholder="나이" />
+            <input type="text" name="pnumber" placeholder="폰번호 쳐라" />
+            <button type="button" onclick="mjoin()" >회원가입</button>
+        </fieldset>
+    </form>
+
+    <a href="/login">로그인 하러 ㄱㄱ</a>
+
+    <br />
+    <script>
+        function mjoin(){
+            const form = document.forms["join"];
+            // 서버에 날려야할 데이터
+            const data = {
+                id: form.id.value,
+                pw: form.pw.value,
+                membername: form.membername.value,
+                age: form.age.value,
+                pnumber: form.pnumber.value
+            }
+            
+            axios({
+                method: 'post',
+                url: '/memberJoin',
+                data: data
+            }).then((res) => {
+                const {
+                    idx,
+                    id,
+                    membername,
+                    age,
+                    pnumber
+                } = res.data
+            })
+        }
+    </script>
+</body>
+</html>

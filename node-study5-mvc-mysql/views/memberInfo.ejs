@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 회원 가입한 인간 정보보기 -->
+    <table>
+        <thead>
+            <tr>
+                <th>회원번호</th>
+                <th>아이디</th>
+                <!-- <th>pw</th> -->
+                <th>성함</th>
+                <th>나이</th>
+                <th>전화번호</th>
+                <th>수정</th>
+                <th>삭제</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% for(let i = 0; i < data.length; i++) { %>
+                <tr>
+                    <td><%= data[i].idx%></td>
+                    <td><%= data[i].id%></td>
+                    <td><%= data[i].membername%></td>
+                    <td><%= data[i].age%></td>
+                    <td><%= data[i].pnumber%></td>
+                    <td><button type="button" onclick=""></button></td>
+                    <td><button type="button" onclick=""></button></td>
+                </tr>
+            <% } %>    
+        </tbody>
+    </table>
+    <script>
+
+    </script>
+</body>
+</html>
