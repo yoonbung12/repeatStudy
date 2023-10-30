@@ -41,3 +41,13 @@ exports.postLogin = (data, cb) => {
         cb(rows);
     }) 
 }
+
+// member수정하기
+exports.editMember = (data, cb) => {
+    let sql = `update member set membername='${data.membername}' ,  pw='${data.pw}' where idx='${data.idx}' `
+    conn.query(sql, function(err,result) {
+        if(err) throw err
+        console.log("result", result);
+        cb();
+    })
+}

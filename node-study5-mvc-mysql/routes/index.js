@@ -15,6 +15,9 @@ router.post("/login", controller.postLogin);
 // member프로파일로 가기
 router.post("/memberInfo", controller.memberInfo);
 
+// member수정 controller.memberEdit(추가)
+router.patch("/memberInfo/:id", controller.memberEdit);
+
 
 // 회원 가입
 router.post("/memberJoin", controller.postMember);

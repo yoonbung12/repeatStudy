@@ -4,39 +4,67 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" 
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" 
+            crossorigin="anonymous"></script>
+    <title>MemberInfo</title>
 </head>
 <body>
-    <!-- 회원 가입한 인간 정보보기 -->
-    <table>
-        <thead>
-            <tr>
-                <th>회원번호</th>
-                <th>아이디</th>
-                <!-- <th>pw</th> -->
-                <th>성함</th>
-                <th>나이</th>
-                <th>전화번호</th>
-                <th>수정</th>
-                <th>삭제</th>
-            </tr>
-        </thead>
-        <tbody>
-            <% for(let i = 0; i < data.length; i++) { %>
-                <tr>
-                    <td><%= data[i].idx%></td>
-                    <td><%= data[i].id%></td>
-                    <td><%= data[i].membername%></td>
-                    <td><%= data[i].age%></td>
-                    <td><%= data[i].pnumber%></td>
-                    <td><button type="button" onclick=""></button></td>
-                    <td><button type="button" onclick=""></button></td>
-                </tr>
-            <% } %>    
-        </tbody>
-    </table>
+    <h2>회원 상세 정보 보기</h2>
+    <!-- 회원 가입한 인간 정보보기(id, name, pw, ) -->
+    <form name="memberInfo" id="memberInfo">
+        <fieldset>
+            <input type="hidden" name="idx" value="<%=data.idx %>" disabled/>
+            <label>
+                id: <input  name="id" value="<%= data.id%>" />
+            </label>
+            <label>
+                pw: <input name="pw" value="<%= data.pw%>" />
+            </label>
+            <label>
+                membername: <input name="membername" value="<%= data.membername%>" />
+            </label>
+            <!-- 회원 탈퇴, 수정 버튼  -->
+            <button type="button" onclick="editMember()">회원 정보 변경하기</button>
+            <button type="button" onclick="removeMember()">회원 삭제</button>
+        </fieldset>
+    </form>
+    <!-- 회원 수정, 탈퇴 -->
     <script>
+        function editMember(){
+            // 받아올 변수 선언(form에 받아야 할것)
+            var form = document.getElementById("memberInfo");
+            if (!form.checkValidity()) {
+                form.reportValidity();
 
+            return false;
+
+            }
+
+            let member ={
+                idx: form.idx.value,
+                id: form.id.value,
+                pw: form.pw.value,
+                membername: form.membername.value
+            };
+            // axios파트
+            axios({
+                method: "patch",
+                url: `memberInfo/${form.idx.value}`,
+                data: member
+            }).then((res) => {
+                if(res.data.result == true) {
+                    alert("회원정보 수정성공");
+                    return ("/login");
+                } else {
+                    alert("회원 정보 수정 실패");
+                    // return '/memberInfo' ;
+                }
+            })
+
+
+        }
     </script>
 </body>
 </html>

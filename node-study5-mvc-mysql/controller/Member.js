@@ -20,6 +20,7 @@ exports.postLogin = (req, res) => {
     })
 }
 
+// 회원 정보 받아오기
 exports.memberInfo = (req, res) => {
     member.getMember(req.body.id, function(result) {
         console.log('memberInfo' , result);
@@ -47,5 +48,18 @@ exports.postMember = (req, res) => {
             ...req.body,
             idx
         });
+    });
+}
+
+// 회원 수정 하기
+exports.memberEdit = (req, res) => {
+    const data = {
+        ...req.body,
+        idx: req.params.idx,
+    }
+    // model에서 호츌하기(update)
+    member.editMember(req.body, (idx) => {
+        // console.log("controller patchMember", idx);
+        res.send({result: true})
     });
 }
