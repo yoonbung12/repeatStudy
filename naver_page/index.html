@@ -581,13 +581,70 @@
                     border-radius: 8px;
                     margin-bottom: 16px;
                 }
-                #main-newstand{
-                    height: 426px;
+                #main-login{
+                    display: flex;
+                    flex-direction: column;
+                    height: 164px;
+                    padding: 21px 20px 18px;
+                    font-size: 1.4rem;
+                }
+                #main-login > div:first-of-type{
+                    line-height: 20px;
+                }
+                #main-login-button{
+                   margin-top: 13px;
+                   padding: 17px 0;
+                   background-color: #03c75a; 
+                   color: white;
+                   border: 1px solid rgba(0,0,0,.06);
+                   height: 56px;
+                   border-radius: 4px;
+                   margin-bottom: 16px;
+                }
+                #main-login-button i{
+                    background-image: url(./sp_main.2b96eea2.png);
+                    background-size: 434px 414px;
+                    background-position: -120px -166px;
+                    background-repeat: no-repeat;
+                    width: 72px;
+                    height: 14px;
+                    display: inline-block;
+                    margin: 3px 8px 0 0;
+                    vertical-align: -1px;
 
                 }
-                #main-login{
-                    height: 164px;
+                #main-login > div:last-of-type{
+                    font-size: 1.3rem;
+                    display: flex;
+                    justify-content: center;
+
                 }
+                #main-login > div:last-of-type a {
+                    text-decoration: none;
+                    color: var(--color_caption2);
+                    letter-spacing: -0.4px;
+                }
+                #main-login > div:last-of-type a:first-of-type, #main-login > div:last-of-type a:last-of-type{
+                    position: relative;
+                    top: 6px;
+                }
+                #main-login > div:last-of-type a:hover {
+                    /* color: inherit;  부모로부터 물려 받늗다.*/
+                    color: #606060;
+                    color: var(--color_caption2);
+                    text-decoration: underline;
+                }
+
+                #main-login > div:last-of-type > a:nth-of-type(2)::before, #main-login > div:last-of-type > a:nth-of-type(2)::after{
+                    content: '';
+                    width: 1px;
+                    display: inline-block;
+                    height: 12px;
+                    background-color: #d3d5d7;
+                    background-color: var(--color_dot_divider);
+                    margin: 4px 12px 0;
+                }
+
                 #main-right-ad{
                     height: 240px;
                 }
@@ -607,16 +664,141 @@
                 #main-stock{
                     height: 236px;
                 }
-
+                /* 뉴스 스탠드 파트 */
+                #main-newstand{
+                    height: 426px;
+                    display: flex;
+                    flex-direction: column;
+                }
+                #main-newstand-top{
+                    flex: 1;
+                    padding: 18px 20px;
+                }
+                #main-newstand header{
+                    font-size: 1.6rem;
+                    display: flex;
+                    justify-content: flex-start;
+                    line-height: 23px;
+                    margin-bottom: 17px;
+                }
+                #main-newstand header.bold{
+                    font-weight: bold;
+                    color: black;
+                }
+                #main-newstand-gray{
+                    display: flex;
+                    justify-content: flex-start;
+                    height: 50px;
+                    padding: 12px 20px;
+                    background-color: var(--color_option_bg);
+                    border-radius: 4px;
+                }
+                #main-newstand a {
+                    text-decoration: none;
+                }
+                #main-newstand a:visited {
+                    color: inherit;
+                }
+                #main-newstand a:hover{
+                    text-decoration: underline;
+                }
+                #main-newstand-grid{
+                    display: grid;
+                    justify-content: center;
+                    align-items: center;
+                    background-color: var(--color_border_in);
+                    border: 1px solid var(--color_border_in);
+                    border-radius: 4px;
+                    width: 790px;
+                    height: 224px;
+                    grid-gap: 1px;
+                    /* 가로 세로 계산해서 할것 */
+                    grid-template-columns: repeat(6, 1fr);
+                    grid-template-rows: repeat(4, 1fr);
+                    /* grid-template-rows: 56px 56px 56px 56px;
+                    grid-template-columns: 131.27px 131.27px 131.27px  131.27px 131.27px 131.27px; */
+                    margin-top: 18px;
+                }
+                #main-newstand-grid > div{
+                    height: 100%;
+                    background-color: white;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+                #main-newstand footer{
+                    padding: 10px 0 11px;
+                    border-top: 1px solid #ebebeb;
+                    border-top: 1px solid var(--color_border_in);
+                }
             </style>
             <main id="main">
                 <div id="main-left">
                     <aside id="main-left-ad"></aside>
-                    <section id="main-newstand"></section>
+                    <section id="main-newstand">
+                        <div id="main-newstand-top">
+                            <header>
+                                <a href="#">뉴스스탠드</a>
+                                <a href="#">언론사 편집</a>
+                                <a href="#">엔터</a>
+                                <a href="#">스포츠</a>
+                                <a href="#">경제</a>
+                            </header>
+                            <div id="main-newstand-gray">
+                                <div>
+                                    <a href="#">분야별 뉴스</a>
+                                    <a href="#">헤럴드 경제</a>
+                                    <a href="#">실력이 늘고 싪다...</a>
+                                </div>
+                                <div>
+                                    <a href="#">뉴스 홈</a>
+                                </div>
+                            </div>
+                            <div id="main-newstand-grid">
+                                <div>언론사</div>
+                                <div>언론사</div>
+                                <div>언론사</div>
+                                <div>언론사</div>
+                                <div>언론사</div>
+                                <div>언론사</div>
+                                <div>언론사</div>
+                                <div>언론사</div>
+                                <div>언론사</div>
+                                <div>언론사</div>
+                                <div>언론사</div>
+                                <div>언론사</div>
+                                <div>언론사</div>
+                                <div>언론사</div>
+                                <div>언론사</div>
+                                <div>언론사</div>
+                                <div>언론사</div>
+                                <div>언론사</div>
+                                <div>언론사</div>
+                                <div>언론사</div>
+                                <div>언론사</div>
+                                <div>언론사</div>
+                                <div>언론사</div>
+                                <div>언론사</div>
+                            </div>
+                        </div>
+                        <footer>
+                            <button><span class="blind">이전</span></button>
+                            <div>언론사 더보기 1페이지/전체</div>
+                            <button><span class="blind">다음</span></button>
+                        </footer>
+                    </section>
                     <section id="main-shopping"></section>
                 </div>
                 <div id="main-right">
-                    <section id="main-login"></section>
+                    <section id="main-login">
+                        <div>네이버를 더 안전하고 편리하게 이용하세요</div>
+                        <a href="" id="main-login-button"><i></i>로그인</a>
+                        <div>
+                            <a href="#">아이디 찾기</a> 
+                            <a href="#">비밀번호 찾기</a> 
+                            <a href="#">회원 가입</a> 
+                        </div>
+                    </section>
                     <aside id="main-right-ad"></aside>
                     <section id="main-weather" class="main-weather-and-stock">
                         <header>날씨</header>
