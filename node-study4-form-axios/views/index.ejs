@@ -21,18 +21,9 @@
     </form>
     <h3 id="result"></h3>
 
-    <form name="testData">
-        <fieldset >
-            <legend>로그인Test하기</legend>
-            <input  type="text"  name="id"/>
-            <input type="password" name="pw" placeholder="비밀번호 입력"/>
-            <button type="button" onclick="login()">로그인</button>
-        </fieldset>
-    </form>
-    <!-- 실패시 빨간글자, 성공시 파란글자 -->
-    <div id="result2"></div>
+    <!-- test -->
 
-    <script >
+    <script>
         // 기본적으로 담아둬야할 데이터
         function getData(){
             const form = document.forms["register"];
@@ -52,16 +43,6 @@
             return data; // data를 반환해준다는 것을 기억하자..
         }
 
-        // test에 쓰일 데이터
-        function testData(){
-            const form2 = document.forms["testData"];
-
-            const data2 = {
-                id: form2.id.value,
-                pw: form2.pw.value,
-            }
-            return data2;
-        }
         function axiosGet(){
             const data = getData();
             if(!data) return; // 이부분 헷갈리네 좀..
@@ -125,26 +106,7 @@
             // })
 
         }
-
-        async function login(){
-            const data2 = testData();
-
-            const res = await axios({
-                method: "post",
-                url: "/aixosPost2",
-                data: data2,
-            })
-            console.log("res:", res);
-            console.log("res.data:", res.data);
-
-            //로그인 성공 여부에 따른 색 변환
-            let colChage = res.data.success ? 'blue' : 'red';
-
-            $("#result2").css("color", colChage).html(res.data.msg)
-        }
-        
-   </script>
-
+    </script>
 
 </body>
 </html>
