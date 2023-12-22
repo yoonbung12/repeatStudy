@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ProtoType과 Scope</title>
+</head>
+<body>
+    <script>
+        var student = {
+            name: 'lee',
+            age: 18,
+
+        }
+        console.log(student.__proto__ === Object.prototype);
+
+        function Person(name) {
+            this.name = name;
+        }
+        var foo = new Person('lee');
+        console.dir(Person);
+        console.dir(foo);
+
+        // constructor 프로퍼티
+        function Person(name) {
+          this.name = name;
+        }
+
+        var foo = new Person('Lee');
+
+        // Person() 생성자 함수에 의해 생성된 객체를 생성한 객체는 Person() 생성자 함수이다.
+        console.log(Person.prototype.constructor === Person);
+
+        // foo 객체를 생성한 객체는 Person() 생성자 함수이다.
+        console.log(foo.constructor === Person);
+
+        // Person() 생성자 함수를 생성한 객체는 Function() 생성자 함수이다.
+        console.log(Person.constructor === Function);
+
+        
+        // String 객체의 프로토타입 객체 String.prototype에 메소드를 추가하면 원시 타입, 객체 모두 메소드를 사용할 수 있다.
+        var str = 'test';
+
+        String.prototype.myMethod = function () {
+        return 'myMethod';
+        };
+
+        console.log(str.myMethod());      // myMethod
+        console.log('string'.myMethod()); // myMethod
+        console.dir(String.prototype);
+
+
+        //  ============================ SCOPE ============================
+        //  scope란? 스코프는 참조 대상 식별자(identifier, 변수, 함수의 이름과 같이 어떤 대상을 다른 대상과 구분하여 식별할 수 있는 유일한 이름)를 찾아내기 위한 규칙이다.
+        //  자바스크립트는 이 규칙대로 식별자를 찾는다.
+        // 종류: 지역 스코프(지역 변수), 전역 스코프(전역변수)
+        var x = 'global';
+
+        function foo() {
+            var x = 'function scope';
+            console.log(x);
+        }
+        // foo(); // foo is not a function
+        console.log(x);
+
+        // 블록레벨 스코프(함수 밖에서도 참조 가능) : 단, ECMAScript 6에서 도입된 let keyword를 사용하면 블록 레벨 스코프를 사용할 수 있다
+        var x = 0;
+        {
+        var x = 1;
+        console.log(x); // 1
+        }
+        console.log(x);   // 1
+
+        let y = 0;
+        {
+        let y = 1;
+        console.log(y); // 1
+        }
+        console.log(y);   // 0
+        // 전역 스코프 : 전역에서 선언하면 지역 어디서든지 사용이 가능하다.
+        var global = 'global';
+
+        function foo() {
+        var local = 'local';
+        console.log(global);
+        console.log(local);
+        }
+        foo();
+
+        console.log(global);
+        console.log(local); // Uncaught ReferenceError: local is not defined
+
+    </script>
+    
+</body>
+</html>

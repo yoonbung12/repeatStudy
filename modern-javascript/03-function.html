@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>함수, 타입체크</title>
+</head>
+<body>
+    <script>
+        // 함수 선언문 function plus() {}
+        // 1) 함수명 
+        // 2) 매개변수 목록( 매개변수 타입을 지정 안하니 함수 몸체 내에서 매개변수 타입 체크가 필요한 경우도 있다.!!!)
+        // 3) 함수 몸체 return 값으로  값 반환
+
+        // 기명함수식
+        var foo = function mul(a, b) {
+            return a * b;
+        }
+        console.log(foo(2, 3));
+        // console.log(mul(2, 3)); -- 함수 호출시 함수명이 아니라 함수를 가리키는 변수명을 입력해야 성공!!!
+
+        // 익명 함수식
+        var  bar = function(a,b) {
+            return a * b;
+        };
+        console.log(bar(3,3));
+
+        // 생성자 함수 --- 권장하지 않는 방식
+        var square = new Function("a","b", 'return a * b');
+        console.log(square(5,3)); 
+
+    </script>
+</body>
+</html>
