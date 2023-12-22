@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>This와 closure</title>
+</head>
+<body>
+    <button class="toggle">toggle</button>
+    <div class="box" style="width: 100px; height: 100px; background: red;"></div>
+
+    <p>클로저를 사용한 Counting</p>
+    <button id="inclease">+</button>
+    <p id="count">0</p>  
+
+    <script>
+        // ================== 클로저 ==================
+        // 현재상태를 기억하고 변경된 최신 상태를 우지하기위해 클로저를 잘 활용해야함.
+        var box = document.querySelector('.box');
+        var toggleBtn = document.querySelector('.toggle');
+    
+        var toggle = (function () {
+          var isShow = false;
+    
+          // ① 클로저를 반환
+          return function () {
+            box.style.display = isShow ? 'block' : 'none';
+            // ③ 상태 변경
+            isShow = !isShow;
+          };
+        })();
+    
+        // ② 이벤트 프로퍼티에 클로저를 할당
+        toggleBtn.onclick = toggle;
+
+        var incleaseBtn = document.getElementById('inclease');
+        var count = document.getElementById('count');
+
+        var increase = (function () {
+            // 카운트 상태를 유지하기 위한 자유 변수
+            var counter = 0;
+            // 클로저를 반환
+            return function () {
+                return ++counter;
+            };
+        }());
+
+        incleaseBtn.onclick = function () {
+        count.innerHTML = increase();
+        };
+      </script>
+    <!-- JS의 This -->
+    <script>
+        // 자바스크립트의 경우 함수 호출 방식에 의해 this에 바인딩할 어떤 객체가 동적으로 결정된다. 
+        // 다시 말해, 함수를 선언할 때 this에 바인딩할 객체가 정적으로 결정되는 것이 아니고, 
+        // 함수를 호출할 때 함수가 어떻게 호출되었는지에 따라 this에 바인딩할 객체가 동적으로 결정된다.
+        var foo = function () {
+        console.dir(this);
+        };
+
+        // 1. 함수 호출
+        foo(); // window
+        // window.foo();
+
+        // 2. 메소드 호출
+        var obj = { foo: foo };
+        obj.foo(); // obj
+
+        // 3. 생성자 함수 호출
+        var instance = new foo(); // instance
+
+        // 4. apply/call/bind 호출
+        var bar = { name: 'bar' };
+        foo.call(bar);   // bar
+        foo.apply(bar);  // bar
+        foo.bind(bar)(); // bar
+
+        // 내부함수는 일반 함수, 메소드, 콜백함수 어디에서 선언되었든 관게없이 this는 전역객체를 바인딩한다. 
+        // 전역변수를 참조를 회피하기 위해서는 아래와 같은 방법을 사용해야 한다.
+        var value = 1;
+        var obj = {
+            value: 100,
+            foo: function() {
+                var that = this; // this === obj
+
+                console.log("foo's this ", this );
+                console.log("foo's this.value", this.value);
+                function bar(){
+                    console.log("bar's this", this);
+                    console.log("bar's this.value", this.value);
+
+                    console.log("bar's that: ",  that); // obj
+                    console.log("bar's that.value: ", that.value); // 100
+                }
+                bar();
+            }
+        };
+        obj.foo() ;
+        function Person(name) {
+            this.name = name;
+        }
+
+        Person.prototype.getName = function() {
+            return this.name;
+        }
+
+        var me = new Person('Lee');
+            console.log(me.getName());
+
+        Person.prototype.name = 'Kim';
+            console.log(Person.prototype.getName());
+
+        // 객체 리터렁 방식과 생성자 함수 방식 비교
+        // 객체 리터럴 방식 :객체 리터럴 방식의 경우, 생성된 객체의 프로토타입 객체는 Object.prototype이다.
+        var foo = {
+        name: 'foo',
+        gender: 'male'
+        }
+
+        console.dir(foo);
+
+        // 생성자 함수 방식 : 생성자 함수 방식의 경우, 생성된 객체의 프로토타입 객체는 Person.prototype이다.
+        function Person(name, gender) {
+        this.name = name;
+        this.gender = gender;
+        }
+
+        var me  = new Person('Lee', 'male');
+        console.dir(me);
+
+        var you = new Person('Kim', 'female');
+        console.dir(you);
+
+
+    </script>
+    
+</body>
+</html>
