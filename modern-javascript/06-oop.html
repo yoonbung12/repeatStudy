@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>객체지향 언어, </title>
+</head>
+<body>
+    <script>
+        // 생성자 함수와 인스턴스 생성
+        // function Person(name) {
+        //     // 프로퍼티
+        //     this.name = name;
+
+        //     // method
+        //     this.setName = function(name) {
+        //         this.name = name;
+        //     };
+
+        //     // method
+        //     this.getName = function(name) {
+        //         return this.name;
+        //     };
+        // }
+
+        // // 인스턴스 생성
+        // var me = new Person('lee');
+        // console.log(me.getName());
+
+        // // 메소드 호출
+        // me.setName('yun');
+        // console.log(me.getName());
+
+        // 이 방법은 문제가 많으니 prototype 방버을 사용해서 해결하도록 하자;.
+        function Person(name) {
+            this.name = name;
+        }
+        // 프로토 타입 객체에 메소드 정의
+        Person.prototype.setName = function(name){
+            this.name =  name;
+        };
+
+        // 프로토타입 객체에 메소드 정의
+        Person.prototype.getName = function(name) {
+            return this.name;
+        }
+        var me  = new Person('Lee');
+        var you = new Person('Kim');
+        var him = new Person('choi');
+
+        console.log(Person.prototype);
+        // Person { setName: [Function], getName: [Function] }
+
+        console.log(me);  // Person { name: 'Lee' }
+        console.log(you); // Person { name: 'Kim' }
+        console.log(him); // Person { name: 'choi' }
+
+        // 상속
+        // 의사 클래스 패턴 상속 ----------=====
+        // 부모 생성자 함수
+        var Parent = (function () {
+        // Constructor
+        function Parent(name) {
+            this.name = name;
+        }
+
+        // method
+        Parent.prototype.sayHi = function () {
+            console.log('Hi! ' + this.name);
+        };
+
+        // return constructor
+        return Parent;
+        }());
+
+        // 자식 생성자 함수
+        var Child = (function () {
+        // Constructor
+        function Child(name) {
+            this.name = name;
+        }
+
+        // 자식 생성자 함수의 프로토타입 객체를 부모 생성자 함수의 인스턴스로 교체.
+        Child.prototype = new Parent(); // ②
+
+        // 메소드 오버라이드
+        Child.prototype.sayHi = function () {
+            console.log('안녕하세요! ' + this.name);
+        };
+
+        // sayBye 메소드는 Parent 생성자함수의 인스턴스에 위치된다
+        Child.prototype.sayBye = function () {
+            console.log('안녕히가세요! ' + this.name);
+        };
+
+        // return constructor
+        return Child;
+        }());
+
+        var child = new Child('child'); // ①
+        console.log(child);  // Parent { name: 'child' }
+
+        console.log(Child.prototype); // Parent { name: undefined, sayHi: [Function], sayBye: [Function] }
+
+        child.sayHi();  // 안녕하세요! child
+        child.sayBye(); // 안녕히가세요! child
+
+        console.log(child instanceof Parent); // true
+        console.log(child instanceof Child);  // true        
+
+        // 프로토타입 패턴 상속 ----------=====
+        // 부모 생성자 함수
+        var Parent = (function () {
+        // Constructor
+        function Parent(name) {
+            this.name = name;
+        }
+
+        // method
+        Parent.prototype.sayHi = function () {
+            console.log('Hi! ' + this.name);
+        };
+
+        // return constructor
+        return Parent;
+        }());
+
+        // create 함수의 인수는 프로토타입이다.
+        var child = Object.create(Parent.prototype);
+        child.name = 'child';
+
+        child.sayHi();  // Hi! child
+
+        console.log(child instanceof Parent); // true      
+        // 캡슐화도 가능하다
+        var person = function (personInfo) {
+            var o = personInfo;
+
+            return {
+                getPersonInfo: function() {
+                return o;
+                }
+            };
+            };
+
+            var me = person({ name: 'Lee', gender: 'male' });
+
+            var myInfo = me.getPersonInfo();
+            console.log('myInfo: ', myInfo);
+            // myInfo:  { name: 'Lee', gender: 'male' }
+
+            myInfo.name = 'Kim';
+
+            myInfo = me.getPersonInfo();
+            console.log('myInfo: ', myInfo);
+            // myInfo:  { name: 'Kim', gender: 'male' }  
+            
+    </script>
+</body>
+</html>
